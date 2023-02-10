@@ -1,7 +1,7 @@
 package com.ntt.bc.resources;
 
-import com.ntt.bc.model.TarjetaDebito;
-import com.ntt.bc.service.ITarjetaDebitoService;
+import com.ntt.bc.model.Credito;
+import com.ntt.bc.service.ICreditoService;
 
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -17,13 +17,13 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-@Path("/debito")
+@Path("/credito")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class TarjetaDebitoResource {
+public class CreditoResource {
 
     @Inject
-    private ITarjetaDebitoService service;
+    private ICreditoService service;
 
     @GET
     public Response listar() {
@@ -34,26 +34,26 @@ public class TarjetaDebitoResource {
     @Transactional
     @Path("/{id}")
     public Response buscarXId(@PathParam("id") Long id) {
-        TarjetaDebito debito = service.buscarPorId(id);
-        if (debito == null) {
+        Credito credito = service.buscarPorId(id);
+        if (credito == null) {
             return Response.noContent().build();
         }
-        return Response.ok(debito).build();
+        return Response.ok(credito).build();
     }
 
     @POST
     @Transactional
-    public Response guardar(@Valid TarjetaDebito debito) {
-        TarjetaDebito nuevoDebito = service.crear(debito);
-        return Response.ok(nuevoDebito).build();
+    public Response guardar(@Valid Credito credito) {
+        Credito nuevCredito = service.crear(credito);
+        return Response.ok(nuevCredito).build();
     }
 
     @PUT
     @Transactional
     @Path("/{id}")
-    public Response actualizar(@PathParam("id") Long id, @Valid TarjetaDebito debito) {
-        TarjetaDebito actualizarDebito = service.actualizar(debito);
-        return Response.ok(actualizarDebito).build();
+    public Response actualizar(@PathParam("id") Long id, @Valid Credito credito) {
+        Credito actualizar = service.actualizar(credito);
+        return Response.ok(actualizar).build();
     }
 
     @DELETE
@@ -61,6 +61,7 @@ public class TarjetaDebitoResource {
     @Path("/{id}")
     public Response eliminar(@PathParam("id") Long id) {
         this.service.eliminar(id);
-        return Response.noContent().build();
+        return Response.status(200).build();
     }
+
 }

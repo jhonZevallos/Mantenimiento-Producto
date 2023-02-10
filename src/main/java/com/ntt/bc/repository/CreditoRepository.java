@@ -1,11 +1,11 @@
 package com.ntt.bc.repository;
 
-import com.ntt.bc.model.TarjetaDebito;
+import com.ntt.bc.model.Credito;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class TarjetaDebitoRepository implements PanacheRepository<TarjetaDebito> {
+public class CreditoRepository implements PanacheRepository<Credito> {
 
 }

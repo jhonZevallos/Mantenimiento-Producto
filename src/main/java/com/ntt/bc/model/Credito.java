@@ -8,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,18 +16,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tarjeta_debito")
-public class TarjetaDebito {
+@Table(name = "credito")
+public class Credito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTarjeta;
-    @NotEmpty
-    private String numTarjeta;
-    @NotEmpty
-    private String pin;
+    private Long idCredito;
+    private LocalDate fechaInicio = LocalDate.now();
     @Nonnull
-    private LocalDate fechaVencimiento;
-    @NotEmpty
-    private String codValidacion;
+    private int cuotas;
+    @Nonnull
+    private LocalDate fechaPago;
+    @Nonnull
+    private Double saldoInicial;
+    @Nonnull
+    private Double saldoActual;
+
 }
