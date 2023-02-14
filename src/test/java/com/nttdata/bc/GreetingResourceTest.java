@@ -1,4 +1,4 @@
-package com.ntt.bc;
+package com.nttdata.bc;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;

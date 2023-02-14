@@ -1,4 +1,4 @@
-package com.ntt.bc;
+package com.nttdata.bc;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
